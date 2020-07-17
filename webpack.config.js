@@ -22,8 +22,12 @@ module.exports = {
               {
                 loader: 'file-loader',
                 options: {
-                  name:'[path][name].[ext]',
-                  ouputPath: './assets/img/',
+                  name(file) {
+                      return '[path][name].[ext]'
+                  },
+                  publicPath: function(url){
+                      return url.replace('../', '/assets/')
+                  },
                   esModule: false
                 }
               },
